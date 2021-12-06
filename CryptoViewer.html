@@ -3,6 +3,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
+<style>
+    #chart_div {
+        width: 800px;
+    }
+</style>
 <body>
 
 <!-- Navigation -->
@@ -13,27 +18,177 @@
   <a href="#contact" class="w3-button w3-bar-item">Contact</a>
 </nav>
 
-<!-- Slide Show -->
-<section>
-  <img class="mySlides" src="fourSeasons.jpg" style="width:20%">
-  <img class="mySlides" src="Galaxy.jpg" style="width:20%">
-  <img class="mySlides" src="ManAndWomanBeach.jpg" style="width:20%">
-</section>
+<div class="myCharts" id="chart_div"></div>
+<div class="myCharts" id="chart_div1"></div>
+<div class="myCharts" id="chart_div2"></div>
+
+<script type="text/javascript" loading="lazy" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <script>
-var myIndex = 0;
-carousel();
+//load current chart package
+google.charts.load("current", {
+  packages: ["corechart", "line"]
+});
+// set callback function when api loaded
+google.charts.setOnLoadCallback(drawChart);
+google.charts.setOnLoadCallback(drawChart2);
+google.charts.setOnLoadCallback(drawChart3);
 
-function carousel() {
+function drawChart() {
+  // create data object with default value
+  let data = google.visualization.arrayToDataTable([
+    ["Months", "1 Bitcoin in USD"],
+    [0, 0]
+  ]);
+
+  // create options object with titles, colors, etc.
+  let options = {
+    title: "Bitcoin",
+    hAxis: {
+      title: "Time(Months)"
+    },
+    vAxis: {
+      title: "USD"
+    }
+  };
+  // draw chart on load
+  let chart = new google.visualization.LineChart(
+    document.getElementById("chart_div")
+  );
+  chart.draw(data, options);
+
+  // interval for adding new data every 250ms
+    let index = 0;
+    setInterval(function() {
+
+                // instead of this random, you can make an ajax call for the current cpu usage or what ever data you want to display
+                var request = new XMLHttpRequest();
+
+				request.onreadystatechange = function() {
+				// send a request to blockchain
+				if(request.readyState == 4 && request.status == 200){
+			      	var data = JSON.parse(request.responseText);
+			    }   // parse the json answer and get the current bitcoin value
+			        value = parseInt(data.USD.last, 10)   
+				}
+				request.open("GET", "https://blockchain.info/ticker", true);
+				request.send();
+
+    data.addRow([index, value]);
+    chart.draw(data, options);
+    index++;
+            }, 5000);
+}
+
+function drawChart2() {
+  // create data object with default value
+  let data = google.visualization.arrayToDataTable([
+    ["Months", "1 Ethereum in USD"],
+    [0, 0]
+  ]);
+
+  // create options object with titles, colors, etc.
+  let options = {
+    title: "Ethereum",
+    hAxis: {
+      title: "Time(Months)"
+    },
+    vAxis: {
+      title: "USD"
+    }
+  };
+  // draw chart on load
+  let chart = new google.visualization.LineChart(
+    document.getElementById("chart_div1")
+  );
+  chart.draw(data, options);
+
+  // interval for adding new data every 250ms
+    let index = 0;
+    setInterval(function() {
+
+                // instead of this random, you can make an ajax call for the current cpu usage or what ever data you want to display
+                var request = new XMLHttpRequest();
+
+				request.onreadystatechange = function() {
+				// send a request to blockchain
+				if(request.readyState == 4 && request.status == 200){
+			      	var data = JSON.parse(request.responseText);
+			    }   // parse the json answer and get the current bitcoin value
+			        value = parseInt(data.USD.last, 10)   
+				}
+				request.open("GET", "https://blockchain.info/ticker", true);
+				request.send();
+
+    data.addRow([index, value]);
+    chart.draw(data, options);
+    index++;
+            }, 5000);
+}
+
+function drawChart3() {
+  // create data object with default value
+  let data = google.visualization.arrayToDataTable([
+    ["Months", "1 Litecoin in USD"],
+    [0, 0]
+  ]);
+
+  // create options object with titles, colors, etc.
+  let options = {
+    title: "Litecoin",
+    hAxis: {
+      title: "Time(Months)"
+    },
+    vAxis: {
+      title: "USD"
+    }
+  };
+  // draw chart on load
+  let chart = new google.visualization.LineChart(
+    document.getElementById("chart_div2")
+  );
+  chart.draw(data, options);
+
+  // interval for adding new data every 250ms
+    let index = 0;
+    setInterval(function() {
+
+                // instead of this random, you can make an ajax call for the current cpu usage or what ever data you want to display
+                var request = new XMLHttpRequest();
+
+				request.onreadystatechange = function() {
+				// send a request to blockchain
+				if(request.readyState == 4 && request.status == 200){
+			      	var data = JSON.parse(request.responseText);
+			    }   // parse the json answer and get the current bitcoin value
+			        value = parseInt(data.USD.last, 10)   
+				}
+				request.open("GET", "https://blockchain.info/ticker", true);
+				request.send();
+
+    data.addRow([index, value]);
+    chart.draw(data, options);
+    index++;
+            }, 5000);
+}
+
+</script>
+
+<script>
+
+var myIndex = 0;
+carousel1();
+
+function carousel1() {
   var i;
-  var x = document.getElementsByClassName("mySlides");
+  var x = document.getElementsByClassName("myCharts");
   for (i = 0; i < x.length; i++) {
     x[i].style.display = "none";
   }
   myIndex++;
   if (myIndex > x.length) {myIndex = 1}
   x[myIndex-1].style.display = "block";
-  setTimeout(carousel, 5000);
+  setTimeout(carousel1, 5000);
 }
 </script>
 
