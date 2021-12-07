@@ -85,6 +85,8 @@
 
 <script type="text/javascript" loading="lazy" src="https://www.gstatic.com/charts/loader.js"></script>
 
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <script>
 //load current chart package
 google.charts.load("current", {
@@ -122,23 +124,19 @@ function drawChart() {
     let index = 0;
     setInterval(function() {
 
-                // instead of this random, you can make an ajax call for the current cpu usage or what ever data you want to display
-                var request = new XMLHttpRequest();
+    			$.ajax({
 
-				request.onreadystatechange = function() {
-				// send a request to blockchain
-				if(request.readyState == 4 && request.status == 200){
-			      	var dataBTC = JSON.parse(request.responseText);
-			    }   // parse the json answer and get the current bitcoin value
-			        value = parseInt(dataBTC.USD.last, 10)   
-				}
-				request.open("GET", "https://blockchain.info/ticker", true);
-				request.send();
-
-    data.addRow([index, value]);
-    chart.draw(data, options);
-    index++;
-            }, 5000);
+				dataType: 'json', // type of response data
+		    	url : 'https://blockchain.info/ticker',
+		    	type : 'GET',
+		    	success : function(response) {
+			    	value = parseInt(response.USD.last, 10)
+			    	data.addRow([index, value]);
+    				chart.draw(data, options);
+    				index++;
+		    	},
+		    })
+    		}, 5000);
 }
 
 function drawChart2() {
@@ -166,25 +164,22 @@ function drawChart2() {
 
   // interval for adding new data every 250ms
     let index = 0;
-    setInterval(function() {
+        setInterval(function() {
 
-                // instead of this random, you can make an ajax call for the current cpu usage or what ever data you want to display
-                var request = new XMLHttpRequest();
+    			$.ajax({
 
-				request.onreadystatechange = function() {
-				// send a request to blockchain
-				if(request.readyState == 4 && request.status == 200){
-			      	var dataETH = JSON.parse(request.responseText);
-			    }   // parse the json answer and get the current bitcoin value
-			        value2 = parseInt(dataETH.data.amount, 10)   
-				}
-				request.open("GET", "https://api.coinbase.com/v2/prices/ETH-USD/spot", true);
-				request.send();
+				dataType: 'json', // type of response data
+		    	url : "https://api.coinbase.com/v2/prices/ETH-USD/spot",
+		    	type : 'GET',
+		    	success : function(response) {
+			    	value = parseInt(response.data.amount, 10)
+			    	data2.addRow([index, value]);
+    				chart2.draw(data2, options2);
+    				index++;
+		    	},
+		    })
+    		}, 5000);
 
-    data2.addRow([index, value2]);
-    chart2.draw(data2, options2);
-    index++;
-            }, 5000);
 }
 
 function drawChart3() {
@@ -212,25 +207,21 @@ function drawChart3() {
 
   // interval for adding new data every 250ms
     let index = 0;
-    setInterval(function() {
+        setInterval(function() {
 
-                // instead of this random, you can make an ajax call for the current cpu usage or what ever data you want to display
-                var request = new XMLHttpRequest();
+    			$.ajax({
 
-				request.onreadystatechange = function() {
-				// send a request to blockchain
-				if(request.readyState == 4 && request.status == 200){
-			      	var dataLTC = JSON.parse(request.responseText);
-			    }   // parse the json answer and get the current bitcoin value
-			        value3 = parseInt(dataLTC.data.amount, 10)   
-				}
-				request.open("GET", "https://api.coinbase.com/v2/prices/LTC-USD/spot", true);
-				request.send();
-
-    data3.addRow([index, value3]);
-    chart3.draw(data3, options3);
-    index++;
-            }, 5000);
+				dataType: 'json', // type of response data
+		    	url : "https://api.coinbase.com/v2/prices/LTC-USD/spot",
+		    	type : 'GET',
+		    	success : function(response) {
+			    	value = parseInt(response.data.amount, 10)
+			    	data3.addRow([index, value]);
+    				chart3.draw(data3, options3);
+    				index++;
+		    	},
+		    })
+    		}, 5000);
 }
 
 </script>
