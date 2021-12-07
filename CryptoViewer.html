@@ -13,6 +13,51 @@
     #chart_div {
         width: 800px;
     }
+
+    /* Dropdown Button */
+	.dropbtn {
+	  background-color: #3498DB;
+	  color: white;
+	  padding: 16px;
+	  font-size: 16px;
+	  border: none;
+	  cursor: pointer;
+	}
+
+	/* Dropdown button on hover & focus */
+	.dropbtn:hover, .dropbtn:focus {
+	  background-color: #2980B9;
+	}
+
+	/* The container <div> - needed to position the dropdown content */
+	.dropdown {
+	  position: relative;
+	  display: inline-block;
+	}
+
+	/* Dropdown Content (Hidden by Default) */
+	.dropdown-content {
+	  display: none;
+	  position: absolute;
+	  background-color: #f1f1f1;
+	  min-width: 160px;
+	  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	  z-index: 1;
+	}
+
+	/* Links inside the dropdown */
+	.dropdown-content a {
+	  color: black;
+	  padding: 12px 16px;
+	  text-decoration: none;
+	  display: block;
+	}
+
+	/* Change color of dropdown links on hover */
+	.dropdown-content a:hover {background-color: #ddd}
+
+	/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+	.show {display:block;}
 </style>
 <body>
 
@@ -24,9 +69,19 @@
   <a href="#contact" class="w3-button w3-bar-item">Contact</a>
 </nav>
 
-<div class="myCharts" id="chart_div"></div>
-<div class="myCharts" id="chart_div1"></div>
-<div class="myCharts" id="chart_div2"></div>
+<div class="myCharts" id="BTCchart_div"></div>
+<div class="myCharts" id="ETHchart_div"></div>
+<div class="myCharts" id="LTCchart_div"></div>
+
+<div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+  <div id="myDropdown" class="dropdown-content">
+    <button onclick="DisplayBTC()">BTC</button>
+    <button onclick="DisplayETH()">ETH</button>
+    <button onclick="DisplayLTC()">LTC</button>
+    <button onclick="DisplayAll()">Reset*</button>
+  </div>
+</div>
 
 <script type="text/javascript" loading="lazy" src="https://www.gstatic.com/charts/loader.js"></script>
 
@@ -59,7 +114,7 @@ function drawChart() {
   };
   // draw chart on load
   let chart = new google.visualization.LineChart(
-    document.getElementById("chart_div")
+    document.getElementById("BTCchart_div")
   );
   chart.draw(data, options);
 
@@ -105,7 +160,7 @@ function drawChart2() {
   };
   // draw chart on load
   let chart2 = new google.visualization.LineChart(
-    document.getElementById("chart_div1")
+    document.getElementById("ETHchart_div")
   );
   chart2.draw(data2, options2);
 
@@ -151,7 +206,7 @@ function drawChart3() {
   };
   // draw chart on load
   let chart3 = new google.visualization.LineChart(
-    document.getElementById("chart_div2")
+    document.getElementById("LTCchart_div")
   );
   chart3.draw(data3, options3);
 
@@ -180,22 +235,47 @@ function drawChart3() {
 
 </script>
 
+
 <script>
 
-var myIndex = 0;
-carousel1();
-
-function carousel1() {
-  var i;
-  var x = document.getElementsByClassName("myCharts");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  myIndex++;
-  if (myIndex > x.length) {myIndex = 1}
-  x[myIndex-1].style.display = "block";
-  setTimeout(carousel1, 5000);
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
 }
+
+function DisplayBTC() {
+	var x = document.getElementsByClassName("myCharts");
+	  for (i = 0; i < x.length; i++) {
+	    x[i].style.display = "none";
+	   }
+	x = document.getElementById("BTCchart_div");
+	x.style.display = "block";
+}
+
+function DisplayLTC() {
+	var x = document.getElementsByClassName("myCharts");
+	  for (i = 0; i < x.length; i++) {
+	    x[i].style.display = "none";
+	   }
+	x = document.getElementById("LTCchart_div");
+	x.style.display = "block";
+}
+
+function DisplayETH() {
+	var x = document.getElementsByClassName("myCharts");
+	  for (i = 0; i < x.length; i++) {
+	    x[i].style.display = "none";
+	   }
+	x = document.getElementById("ETHchart_div");
+	x.style.display = "block";
+}
+
+function DisplayAll() {
+	var x = document.getElementsByClassName("myCharts");
+	  for (i = 0; i < x.length; i++) {
+	    x[i].style.display = "block";
+	   }
+}
+
 </script>
 
 
