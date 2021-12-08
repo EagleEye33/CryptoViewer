@@ -75,8 +75,8 @@
 </nav>
 
 <div class="myCharts" id="BTCchart_div"></div>
-<div class="myCharts" id="ETHchart_div"></div>
-<div class="myCharts" id="LTCchart_div"></div>
+<div class="myCharts" id="ETHchart_div" style="display:none;"></div>
+<div class="myCharts" id="LTCchart_div" style="display:none;"></div>
 
 <div class="dropdown">
   <button onclick="myFunction()" class="dropbtn">Dropdown</button>
@@ -84,7 +84,6 @@
     <button onclick="DisplayBTC()">BTC</button>
     <button onclick="DisplayETH()">ETH</button>
     <button onclick="DisplayLTC()">LTC</button>
-    <button onclick="DisplayAll()">Reset*</button>
   </div>
 </div>
 
@@ -263,13 +262,6 @@ function DisplayETH() {
 	   }
 	x = document.getElementById("ETHchart_div");
 	x.style.display = "block";
-}
-
-function DisplayAll() {
-	var x = document.getElementsByClassName("myCharts");
-	  for (i = 0; i < x.length; i++) {
-	    x[i].style.display = "block";
-	   }
 }
 
 </script>
