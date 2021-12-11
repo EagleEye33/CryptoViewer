@@ -11,6 +11,10 @@
       background-attachment: fixed;
 	}
 
+	.chartMaster {
+		position: fixed;
+		top: 150px;
+	}
     /* Dropdown Button */
 	.dropbtn {
 	  background-color: #121212;
@@ -27,11 +31,10 @@
 
 	/* The container <div> - needed to position the dropdown content */
 	.dropdown {
-	  position: absolute;
+	  position: fixed;
 	  display: inline-block;
 	  margin-left: 48px;
 	  margin-top: 24px;
-	  position: absolute;
 	  left: 750px;
 	  bottom: 730px;
 	}
@@ -39,7 +42,7 @@
 	/* Dropdown Content (Hidden by Default) */
 	.dropdown-content {
 	  display: none;
-	  position: absolute;
+	  position: fixed;
 	  background-color: #f1f1f1;
 	  min-width: 60px;
 	  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -85,10 +88,11 @@
   <a href="#contact" class="w3-button w3-bar-item">Contact</a>
 </nav>
 
-
-<div class="myCharts" id="BTCchart_div"></div>
-<div class="myCharts" id="ETHchart_div" style="display:none;"></div>
-<div class="myCharts" id="LTCchart_div" style="display:none;"></div>
+<div class="chartMaster">
+	<div class="myCharts" id="BTCchart_div"></div>
+	<div class="myCharts" id="ETHchart_div" style="display:none;"></div>
+	<div class="myCharts" id="LTCchart_div" style="display:none;"></div>
+</div>
 
 <script type="text/javascript" loading="lazy" src="https://www.gstatic.com/charts/loader.js"></script>
 
@@ -96,7 +100,7 @@
 
 <script>
 //load current chart package
-google.charts.load("current", {
+google.charts.load("45", {
   packages: ["corechart", "line"]
 });
 // set callback function when api loaded
@@ -114,6 +118,8 @@ function drawChart() {
   // create options object with titles, colors, etc.
   let options = {
     title: "Bitcoin",
+    height: 500,
+    width: 1000,
     colors: ['#FFFF00'],
     backgroundColor: 'none',
 
@@ -182,12 +188,38 @@ function drawChart2() {
   // create options object with titles, colors, etc.
   let options2 = {
     title: "Ethereum",
-    hAxis: {
-      title: "Time(Seconds)"
-    },
-    vAxis: {
-      title: "USD"
-    }
+    height: 500,
+    width: 1000,
+    backgroundColor: 'none',
+	hAxis: {
+	      title: "Time(seconds)",
+	      textStyle: {
+	      	color: '#ffffff'
+	      },
+	      	titleTextStyle: {
+		    color: '#ffffff'
+		}
+	    },
+
+	    vAxis: {
+	      title: "USD",
+	      textStyle: {
+	      	color: '#ffffff'
+	      },
+	      	titleTextStyle: {
+		    color: '#ffffff'
+		}
+	    },
+
+	    legend: {
+		    textStyle: {
+		    color: '#ffffff'
+		  }
+		},
+
+		titleTextStyle: {
+		    color: '#ffffff'
+		}
   };
   // draw chart on load
   let chart2 = new google.visualization.LineChart(
@@ -225,12 +257,39 @@ function drawChart3() {
   // create options object with titles, colors, etc.
   let options3 = {
     title: "Litecoin",
-    hAxis: {
-      title: "Time(Seconds)"
-    },
-    vAxis: {
-      title: "USD"
-    }
+    height: 500,
+    width: 1000,
+    backgroundColor: 'none',
+    colors: ['7FFFD4'],
+	hAxis: {
+	      title: "Time(seconds)",
+	      textStyle: {
+	      	color: '#ffffff'
+	      },
+	      	titleTextStyle: {
+		    color: '#ffffff'
+		}
+	    },
+
+	    vAxis: {
+	      title: "USD",
+	      textStyle: {
+	      	color: '#ffffff'
+	      },
+	      	titleTextStyle: {
+		    color: '#ffffff'
+		}
+	    },
+
+	    legend: {
+		    textStyle: {
+		    color: '#ffffff'
+		  }
+		},
+
+		titleTextStyle: {
+		    color: '#ffffff'
+		}
   };
   // draw chart on load
   let chart3 = new google.visualization.LineChart(
