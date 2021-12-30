@@ -28,3 +28,12 @@ function DisplayETH() {
 	x = document.getElementById("ETHchart_div");
 	x.style.display = "block";
 }
+
+function DisplayAll() {
+	var x = document.getElementsByClassName("myCharts");
+	  for (i = 0; i < x.length; i++) {
+	    x[i].style.display = "none";
+	   }
+	x = document.getElementById("Allchart_div");
+	x.style.display = "block";
+}

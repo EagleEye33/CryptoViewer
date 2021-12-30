@@ -18,15 +18,17 @@
 		    <button onclick="DisplayBTC()">BTC</button>
 		    <button onclick="DisplayETH()">ETH</button>
 		    <button onclick="DisplayLTC()">LTC</button>
+		    <button onclick="DisplayAll()">All</button>
 	  	</div>
   </div>
 </nav>
 
-<div class="chartMaster">
-	<div class="myCharts" id="BTCchart_div"></div>
-	<div class="myCharts" id="ETHchart_div" style="display:none;"></div>
-	<div class="myCharts" id="LTCchart_div" style="display:none;"></div>
-</div>
+
+		<div class="myCharts" id="BTCchart_div"></div>
+		<div class="myCharts" id="ETHchart_div" style="display:none;"></div>
+		<div class="myCharts" id="LTCchart_div" style="display:none;"></div>
+		<div class="myCharts" id="Allchart_div" style="display: none"></div>
+
 
 <script type="text/javascript" loading="lazy" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
