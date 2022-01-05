@@ -35,9 +35,7 @@ function set_coin(text) {
 }
 
 function notifyMe() {
-    console.log(coin)
-    console.log(low)
-    console.log(high)
+
     if (coin !== '' && (low !== Number.POSITIVE_INFINITY || high !== Number.NEGATIVE_INFINITY))
     {
         document.getElementById("notifyisset").innerHTML = ''

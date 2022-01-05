@@ -60,7 +60,7 @@ function drawChart() {
   	backgroundColor: 'none',
 
   	hAxis: {
-  		title: "Time(seconds)",
+  		title: "Time",
   		textPosition: 'none',
   		textStyle: {
   			color: '#ffffff'
@@ -145,7 +145,7 @@ function drawChart2() {
   	width: 1000,
   	backgroundColor: 'none',
   	hAxis: {
-  		title: "Time(seconds)",
+  		title: "Time",
   		textPosition: 'none',
   		textStyle: {
   			color: '#ffffff'
@@ -230,7 +230,7 @@ function drawChart3() {
   	backgroundColor: 'none',
   	colors: ['7FFFD4'],
   	hAxis: {
-  		title: "Time(seconds)",
+  		title: "Time",
   		textPosition: 'none',
   		textStyle: {
   			color: '#ffffff'
@@ -349,7 +349,7 @@ function drawAllChart() {
   	backgroundColor: 'none',
 
   	hAxis: {
-  		title: "Time(seconds)",
+  		title: "Time",
   		textPosition: 'none',
   		textStyle: {
   			color: '#ffffff'
