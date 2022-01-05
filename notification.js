@@ -1,7 +1,7 @@
 let coin = '';
 let low = Number.POSITIVE_INFINITY;
 let high = Number.NEGATIVE_INFINITY;
-let nInterval = 30;
+let nInterval = 60;
 
 function set_low(value) {
     testValue = parseInt(value, 10)
