@@ -1,14 +1,17 @@
 //load current chart package
-google.charts.load("45", {
+google.charts.load("45", { 
+	callback: function() {
+	drawChart();
+	$(window).resize(drawChart);
+	},
   packages: ["corechart", "line"]
 });
 // set callback function when api loaded
-google.charts.setOnLoadCallback(drawChart);
 google.charts.setOnLoadCallback(drawChart2);
 google.charts.setOnLoadCallback(drawChart3);
 google.charts.setOnLoadCallback(drawAllChart);
 
-let interval = 180
+let interval = 10000000
 
 /*function asyncChart(site, _response, chart, data, options, index) {
 	$.ajax({
@@ -46,9 +49,13 @@ function drawChart() {
 
   // create options object with titles, colors, etc.
   let options = {
+  	chartArea: {
+  		// leave room for labels
+  		width: '65%',
+  		height: '90%',
+  	},
+  	width: '50%',
   	title: "Bitcoin",
-  	height: 500,
-  	width: 1000,
   	colors: ['#FFFF00'],
   	backgroundColor: 'none',
 

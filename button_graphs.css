@@ -3,9 +3,17 @@
       background-repeat: no-repeat;
       background-size: cover;
       background-attachment: fixed;
-	}
+	} 
 
 	.myCharts {
+	   position: absolute;
+	   width: 100%;
+	   left: 50%;
+	   top: 50%;
+	   transform: translate(-50%,-50%);
+	}
+
+	.notifications {
 	   position: absolute;
 	   left: 50%;
 	   top: 50%;
