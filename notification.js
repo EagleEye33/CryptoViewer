@@ -1,7 +1,7 @@
 let coin = '';
 let low = Number.POSITIVE_INFINITY;
 let high = Number.NEGATIVE_INFINITY;
-let interval = 30;
+let nInterval = 30;
 
 function set_low(value) {
     testValue = parseInt(value, 10)
@@ -94,7 +94,7 @@ function notifyMe() {
 
             });
 
-                    }, interval*1000);
+                    }, nInterval*1000);
 
                     } else {
             // request permission from user
@@ -144,7 +144,7 @@ function notifyMe() {
 
             });
                         
-                    }, interval*1000);
+                    }, nInterval*1000);
                 } else {
                     console.log('User blocked notifications.');
                 }
