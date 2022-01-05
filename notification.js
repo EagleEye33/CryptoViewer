@@ -39,7 +39,7 @@ function notifyMe() {
 
     if (coin !== '' && (low !== Number.POSITIVE_INFINITY || high !== Number.NEGATIVE_INFINITY))
     {
-        
+
         document.getElementById("notifyisset").innerHTML = ''
         let greaterThanHigh = false
         let lessThanLow = false
@@ -60,33 +60,33 @@ function notifyMe() {
                     let value = response.USD
                     if (value >= high) {
                         var notify = new Notification('High surpassed!', {
-                            body: 'the price of ' +coin+ ' in USD is: ' + value '. Your high was set to ' +high+,
+                            body: 'the price of ' +coin+ ' in USD is: ' +value+ '. Your high was set to ' +high,
                             icon: 'space.jpg',    
-                        }
+                        })
                         greaterThanHigh = true
                         lessThanLow = false
                     }
                     if(value <= low) {
                         var notify = new Notification('Low surpassed!', {
-                            body: 'the price of ' +coin+ ' in USD is: ' + value '. Your low was set to ' +low+,
+                            body: 'the price of ' +coin+ ' in USD is: ' +value+ '. Your low was set to ' +low,
                             icon: 'space.jpg',    
-                        }
+                        })
                         lessThanLow = true
                         greaterThanHigh = false
                     }
-                    if(value <= high && greaterThanHigh = true) {
+                    if(value <= high && greaterThanHigh == true) {
                         var notify = new Notification('Dipped back below high!', {
-                            body: 'the price of ' +coin+ ' in USD is: ' + value '. Your high was set to ' +high+,
+                            body: 'the price of ' +coin+ ' in USD is: ' +value+ '. Your high was set to ' +high,
                             icon: 'space.jpg',    
-                        }
+                        })
                         greaterThanHigh = false
                         lessThanLow = false
                     }
-                    if(value >= low && lessThanLow = true) {
+                    if(value >= low && lessThanLow == true) {
                         var notify = new Notification('price rised above the low!', {
-                            body: 'the price of ' +coin+ ' in USD is: ' + value '. Your low was set to ' +low+,
+                            body: 'the price of ' +coin+ ' in USD is: ' +value+ '. Your low was set to ' +low,
                             icon: 'space.jpg',    
-                        }
+                        })
                         greaterThanHigh = false
                         lessThanLow = false
                     }
@@ -110,33 +110,33 @@ function notifyMe() {
                     let value = response.USD
                     if (value >= high) {
                         var notify = new Notification('High surpassed!', {
-                            body: 'the price of ' +coin+ ' in USD is: ' + value '. Your high was set to ' +high+,
+                            body: 'the price of ' +coin+ ' in USD is: ' +value+ '. Your high was set to ' +high,
                             icon: 'space.jpg',    
-                        }
+                        })
                         greaterThanHigh = true
                         lessThanLow = false
                     }
                     if(value <= low) {
                         var notify = new Notification('Low surpassed!', {
-                            body: 'the price of ' +coin+ ' in USD is: ' + value '. Your low was set to ' +low+,
+                            body: 'the price of ' +coin+ ' in USD is: ' +value+ '. Your low was set to ' +low,
                             icon: 'space.jpg',    
-                        }
+                        })
                         lessThanLow = true
                         greaterThanHigh = false
                     }
-                    if(value <= high && greaterThanHigh = true) {
+                    if(value <= high && greaterThanHigh == true) {
                         var notify = new Notification('Dipped back below high!', {
-                            body: 'the price of ' +coin+ ' in USD is: ' + value '. Your high was set to ' +high+,
+                            body: 'the price of ' +coin+ ' in USD is: ' +value+ '. Your high was set to ' +high,
                             icon: 'space.jpg',    
-                        }
+                        })
                         greaterThanHigh = false
                         lessThanLow = false
                     }
-                    if(value >= low && lessThanLow = true) {
+                    if(value >= low && lessThanLow == true) {
                         var notify = new Notification('price rised above the low!', {
-                            body: 'the price of ' +coin+ ' in USD is: ' + value '. Your low was set to ' +low+,
+                            body: 'the price of ' +coin+ ' in USD is: ' +value+ '. Your low was set to ' +low,
                             icon: 'space.jpg',    
-                        }
+                        })
                         greaterThanHigh = false
                         lessThanLow = false
                     }
