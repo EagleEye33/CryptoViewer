@@ -43,7 +43,7 @@ function notifyMe() {
         document.getElementById("notifyisset").innerHTML = 'notification set with low: ' +low+ ', high: ' +high+ ' and cryptocurrency' +coin 
         document.getElementById("lowisset").innerHTML = ''
         document.getElementById('highisset').innerHTML= ''
-        document.getElementById('notifyisset').innerHTML= ''
+        //document.getElementById('notifyisset').innerHTML= ''
         let greaterThanHigh = false
         let lessThanLow = false
         let localHigh = high 
@@ -67,7 +67,7 @@ function notifyMe() {
                 type : 'GET',
                 success : function(response) {
                     let value = response.USD
-                    if (value >= high) {
+                    if (value >= localHigh) {
                         var notify = new Notification('High surpassed!', {
                             body: 'the price of ' +localCoin+ ' in USD is: ' +value+ '. Your high was set to ' +localHigh,
                             icon: 'space.jpg',    
@@ -75,7 +75,7 @@ function notifyMe() {
                         greaterThanHigh = true
                         lessThanLow = false
                     }
-                    if(value <= low) {
+                    if(value <= localLow) {
                         var notify = new Notification('Low surpassed!', {
                             body: 'the price of ' +localCoin+ ' in USD is: ' +value+ '. Your low was set to ' +localLow,
                             icon: 'space.jpg',    
@@ -83,7 +83,7 @@ function notifyMe() {
                         lessThanLow = true
                         greaterThanHigh = false
                     }
-                    if(value <= high && greaterThanHigh == true) {
+                    if(value <= localHigh && greaterThanHigh == true) {
                         var notify = new Notification('Dipped back below high!', {
                             body: 'the price of ' +localCoin+ ' in USD is: ' +value+ '. Your high was set to ' +localHigh,
                             icon: 'space.jpg',    
@@ -91,7 +91,7 @@ function notifyMe() {
                         greaterThanHigh = false
                         lessThanLow = false
                     }
-                    if(value >= low && lessThanLow == true) {
+                    if(value >= localLow && lessThanLow == true) {
                         var notify = new Notification('price rised above the low!', {
                             body: 'the price of ' +localCoin+ ' in USD is: ' +value+ '. Your low was set to ' +localLow,
                             icon: 'space.jpg',    
@@ -121,7 +121,7 @@ function notifyMe() {
                 type : 'GET',
                 success : function(response) {
                     let value = response.USD
-                    if (value >= high) {
+                    if (value >= localHigh) {
                         var notify = new Notification('High surpassed!', {
                             body: 'the price of ' +localCoin+ ' in USD is: ' +value+ '. Your high was set to ' +localHigh,
                             icon: 'space.jpg',    
@@ -129,7 +129,7 @@ function notifyMe() {
                         greaterThanHigh = true
                         lessThanLow = false
                     }
-                    if(value <= low) {
+                    if(value <= localLow) {
                         var notify = new Notification('Low surpassed!', {
                             body: 'the price of ' +localCoin+ ' in USD is: ' +value+ '. Your low was set to ' +localLow,
                             icon: 'space.jpg',    
@@ -137,7 +137,7 @@ function notifyMe() {
                         lessThanLow = true
                         greaterThanHigh = false
                     }
-                    if(value <= high && greaterThanHigh == true) {
+                    if(value <= localHigh && greaterThanHigh == true) {
                         var notify = new Notification('Dipped back below high!', {
                             body: 'the price of ' +localCoin+ ' in USD is: ' +value+ '. Your high was set to ' +localHigh,
                             icon: 'space.jpg',    
@@ -145,7 +145,7 @@ function notifyMe() {
                         greaterThanHigh = false
                         lessThanLow = false
                     }
-                    if(value >= low && lessThanLow == true) {
+                    if(value >= localLow && lessThanLow == true) {
                         var notify = new Notification('price rised above the low!', {
                             body: 'the price of ' +localCoin+ ' in USD is: ' +value+ '. Your low was set to ' +localLow,
                             icon: 'space.jpg',    
