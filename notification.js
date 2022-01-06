@@ -1,13 +1,13 @@
 let coin = '';
 let low = Number.POSITIVE_INFINITY;
 let high = Number.NEGATIVE_INFINITY;
-let nInterval = 60;
+let nInterval = 180;
 
 function set_low(value) {
     testValue = parseInt(value, 10)
     if (!Number.isNaN(testValue)) {
         low = testValue
-        document.getElementById("lowisset").innerHTML = "low is set to: " + low
+        document.getElementById("lowisset").innerHTML = " low is set to: " + low
         document.getElementById("lowisset").style.color = "white"
     }
     else {
@@ -20,7 +20,7 @@ function set_high(value) {
     testValue = parseInt(value,10)
     if(!Number.isNaN(testValue)) {
       high = testValue
-      document.getElementById("highisset").innerHTML = "high is set to: " + high
+      document.getElementById("highisset").innerHTML = " high is set to: " + high
       document.getElementById("highisset").style.color = "white"
   }
     else {
@@ -31,7 +31,7 @@ function set_high(value) {
 
 function set_coin(text) {
     coin = text.toUpperCase()
-    document.getElementById("cryptoisset").innerHTML = "cryptocurrency is set to: " + coin
+    document.getElementById("cryptoisset").innerHTML = " cryptocurrency is set to: " + coin
 
 }
 
@@ -40,7 +40,10 @@ function notifyMe() {
     if (coin !== '' && (low !== Number.POSITIVE_INFINITY || high !== Number.NEGATIVE_INFINITY))
     {
 
-        document.getElementById("notifyisset").innerHTML = ''
+        document.getElementById("notifyisset").innerHTML = 'notification set with low: ' +low+ ', high: ' +high+ ' and cryptocurrency' +coin 
+        document.getElementById("lowisset").innerHTML = ''
+        document.getElementById('highisset').innerHTML= ''
+        document.getElementById('notifyisset').innerHTML= ''
         let greaterThanHigh = false
         let lessThanLow = false
 

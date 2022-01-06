@@ -7,7 +7,6 @@
 
 	.myCharts {
 	   position: absolute;
-	   width: 100%;
 	   left: 50%;
 	   top: 50%;
 	   transform: translate(-50%,-50%);
@@ -18,6 +17,14 @@
 	   left: 50%;
 	   top: 50%;
 	   transform: translate(-50%,-50%);
+	}
+
+	.contact {
+	   position: absolute;
+	   left: 50%;
+	   top: 40%;
+	   transform: translate(-50%,-50%);
+	   color: white;
 	}
 
     /* Dropdown Button */

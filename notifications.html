@@ -13,6 +13,7 @@
   <a href="contact.html" class="w3-button w3-bar-item">Contact</a>
 </nav>
 
+<div class="wrapper">
 <div class="notifications">
 	<p style="color:white;">Select a coin and a high or low value to be notified when the coins price goes above or below that value. If the price goes above or below the high or the low, respectively, and dips back below the high, or rises above the low, there will also be a notification for this. <br></p>
 	<button onclick="notifyMe()">Notify Me</button><p style="color:white;display:inline;white-space:nowrap;" id="notifyisset"></p>
@@ -22,8 +23,14 @@
 	<input type="text" name="coin" id="coin"><p id="cryptoisset" style="color:white;display:inline;white-space: nowrap;"></p><br>
 	<button onclick="set_coin(document.getElementById('coin').value)">Add cryptocurrency</button>
 </div>
+</div>
 
 <script type="text/javascript" src="notification.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" loading="lazy" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="coinGraphs.js"></script>
+<script type="text/javascript" src="graphFunctions.js"></script>
+
 </body>
 </html>

@@ -1,17 +1,14 @@
 //load current chart package
-google.charts.load("45", { 
-	callback: function() {
-	drawChart();
-	$(window).resize(drawChart);
-	},
+google.charts.load("45", {
   packages: ["corechart", "line"]
 });
-// set callback function when api loaded
+// set callback function when api loaded\
+google.charts.setOnLoadCallback(drawChart);
 google.charts.setOnLoadCallback(drawChart2);
 google.charts.setOnLoadCallback(drawChart3);
 google.charts.setOnLoadCallback(drawAllChart);
 
-let interval = 60
+let interval = 180
 
 /*function asyncChart(site, _response, chart, data, options, index) {
 	$.ajax({
@@ -37,7 +34,6 @@ function drawChart() {
         success : function(response) {
         	let initialValue = response.Data.Data[0].high
         	let initialTime = serialDateToNiceDate(response.Data.Data[0].time/3600/24).toString().substr(0,24)
-        	let updateTime = response.Data.Data[response.Data.Data.length-1].time
         	  // create data object with default value
         	  let data = google.visualization.arrayToDataTable([
         	  	["Hours", "1 Bitcoin in USD"],
@@ -49,12 +45,8 @@ function drawChart() {
 
   // create options object with titles, colors, etc.
   let options = {
-  	chartArea: {
-  		// leave room for labels
-  		width: '65%',
-  		height: '90%',
-  	},
-  	width: '50%',
+  	height: 500,
+  	width: 1000,
   	title: "Bitcoin",
   	colors: ['#FFFF00'],
   	backgroundColor: 'none',
@@ -98,6 +90,7 @@ function drawChart() {
 
   // interval for adding new data every ???(sec)
   let currentTime = 0;
+  let updateTime = Date.now()/1000
 
   setInterval(function() {
   	$.ajax({
@@ -107,7 +100,7 @@ function drawChart() {
 				type : 'GET',
 				success : function(response) {
 					let value = response.USD
-					currentTime = serialDateToNiceDate((updateTime += interval)/3600/24).toString().substr(0,24);
+					currentTime = serialDateToNiceDate((updateTime+=interval)/3600/24).toString().substr(0,24);
 					data.addRow([currentTime, value]);
 					chart.draw(data, options);
 				},
@@ -115,7 +108,6 @@ function drawChart() {
   }, interval*1000);
 }
 })
-
 }
 
 function drawChart2() {
@@ -325,7 +317,6 @@ function drawAllChart() {
         type : 'GET',
         success : function(response) {
         	let btcArray = ajaxCall1()
-        	console.log(btcArray)
         	let ethArray = ajaxCall2()
         	let initialTime = serialDateToNiceDate(response.Data.Data[0].time/3600/24).toString().substr(0,24)
         	let updateTime = response.Data.Data[response.Data.Data.length-1].time
