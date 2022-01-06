@@ -39,7 +39,7 @@ function notifyMe() {
 
     if (coin !== '' && (low !== Number.POSITIVE_INFINITY || high !== Number.NEGATIVE_INFINITY))
     {
-        document.getElementById("notifyisset".style.color = "white"
+        document.getElementById("notifyisset").style.color = "white"
         document.getElementById("notifyisset").innerHTML = ' notification set with low: ' +low+ ', high: ' +high+ ' and cryptocurrency ' +coin 
         document.getElementById("lowisset").innerHTML = ''
         document.getElementById('highisset').innerHTML= ''
