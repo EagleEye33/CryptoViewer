@@ -39,11 +39,11 @@ function notifyMe() {
 
     if (coin !== '' && (low !== Number.POSITIVE_INFINITY || high !== Number.NEGATIVE_INFINITY))
     {
-
-        document.getElementById("notifyisset").innerHTML = 'notification set with low: ' +low+ ', high: ' +high+ ' and cryptocurrency' +coin 
+        document.getElementById("notifyisset".style.color = "white"
+        document.getElementById("notifyisset").innerHTML = ' notification set with low: ' +low+ ', high: ' +high+ ' and cryptocurrency ' +coin 
         document.getElementById("lowisset").innerHTML = ''
         document.getElementById('highisset').innerHTML= ''
-        //document.getElementById('notifyisset').innerHTML= ''
+        document.getElementById('cryptoisset').innerHTML= ''
         let greaterThanHigh = false
         let lessThanLow = false
         let localHigh = high 
@@ -154,7 +154,7 @@ function notifyMe() {
                         lessThanLow = false
                     }
                 },
-                error: function() {
+                error: function(xhr, status, error) {
                     document.getElementById("notifyisset").innerHTML = " invalid cryotocurrency"
                     document.getElementById("notifyisset").style.color = "red"
                 }
