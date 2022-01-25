@@ -1,7 +1,8 @@
 let coin = '';
 let low = Number.POSITIVE_INFINITY;
 let high = Number.NEGATIVE_INFINITY;
-let nInterval = 10;
+let nInterval = 20;
+let notifyInterval = ''
 
 function set_low(value) {
     testValue = parseInt(value, 10)
@@ -30,8 +31,15 @@ function set_high(value) {
 }
 
 function set_coin(text) {
-    coin = text.toUpperCase()
-    document.getElementById("cryptoisset").innerHTML = " cryptocurrency is set to: " + coin
+    coin = text
+    if(coin == '') {
+        document.getElementById("cryptoisset").innerHTML = "please select a valid value"
+        document.getElementById("cryptoisset").style.color = "red"
+    }
+    else {
+        document.getElementById("cryptoisset").style.color = "white"
+        document.getElementById("cryptoisset").innerHTML = " cryptocurrency is set to: " + coin
+    }
 
 }
 
@@ -39,6 +47,8 @@ function notifyMe() {
 
     if (coin !== '' && (low !== Number.POSITIVE_INFINITY || high !== Number.NEGATIVE_INFINITY))
     {
+        clearInterval(notifyInterval);
+
         document.getElementById("notifyisset").style.color = "white"
         document.getElementById("notifyisset").innerHTML = ' notification set with low: ' +low+ ', high: ' +high+ ' and cryptocurrency ' +coin 
         document.getElementById("lowisset").innerHTML = ''
@@ -49,6 +59,9 @@ function notifyMe() {
         let localHigh = high 
         let localLow = low 
         let localCoin = coin 
+        console.log(localLow)
+        console.log(localHigh)
+        console.log(localCoin)
         low = Number.POSITIVE_INFINITY
         high = Number.NEGATIVE_INFINITY
         coin = ''
@@ -59,7 +72,7 @@ function notifyMe() {
         // check if permission is already granted
         if (Notification.permission === 'granted') {
             // show notification here
-            setInterval(function() {
+            notifyInterval = setInterval(function() {
                 $.ajax({
 
                 dataType: 'json', // type of response data
@@ -100,7 +113,7 @@ function notifyMe() {
                         lessThanLow = false
                     }
                 },
-                error: function() {
+                error: function(xhr, stauts, error) {
                     document.getElementById("notifyisset").innerHTML = " invalid cryotocurrency"
                     document.getElementById("notifyisset").style.color = "red"
                 }
@@ -113,7 +126,7 @@ function notifyMe() {
             // request permission from user
             Notification.requestPermission().then(function (p) {
                 if (p === 'granted') {
-                    setInterval(function() {
+                   notifyInterval = setInterval(function() {
                         $.ajax({
 
                 dataType: 'json', // type of response data
@@ -121,6 +134,7 @@ function notifyMe() {
                 type : 'GET',
                 success : function(response) {
                     let value = response.USD
+                    console.log(value)
                     if (value >= localHigh) {
                         var notify = new Notification('High surpassed!', {
                             body: 'the price of ' +localCoin+ ' in USD is: ' +value+ '. Your high was set to ' +localHigh,

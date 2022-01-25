@@ -20,7 +20,16 @@
 	<br><br>
 	<input type="number" name="low" id="low"><p style="color:white;display:inline;white-space: nowrap;" id="lowisset"></p><br> <button onclick = "set_low(document.getElementById('low').value)">Add low</button><br><br><input type="number" name="high" id="high"><p id=highisset style="color:white;display:inline;white-space: nowrap;"></p><br>
 	<button onclick="set_high(document.getElementById('high').value)">Add high</button><br><br>
-	<input type="text" name="coin" id="coin"><p id="cryptoisset" style="color:white;display:inline;white-space: nowrap;"></p><br>
+	<div class="dropdown">
+		<button onclick="myFunction()" class="dropbtn">Select a cryptocurrency</button>
+		<input type="text" name = "coin" id="coin" placeholder="Search.." ><p id="cryptoisset" style="color:white;display:inline;white-space: nowrap;"></p><br>
+		<div id="myDropdown" class="dropdown-content">
+			<a href="#">BTC</a>
+			<a href="#">ETH</a>
+			<a href="#">LTC</a>
+		</div>
+	</div>
+	<br><br>
 	<button onclick="set_coin(document.getElementById('coin').value)">Add cryptocurrency</button>
 </div>
 </div>
@@ -29,6 +38,16 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" loading="lazy" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="graphFunctions.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#myDropdown a").click(function() {
+			var value = $(this).html();
+				var input = $("#coin");
+				input.val(value);
+		});
+	});
+</script>
 
 </body>
 </html>

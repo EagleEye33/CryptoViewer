@@ -8,7 +8,7 @@ google.charts.setOnLoadCallback(drawChart2);
 google.charts.setOnLoadCallback(drawChart3);
 google.charts.setOnLoadCallback(drawAllChart);
 
-let interval = 180
+let interval = 3600
 
 /*function asyncChart(site, _response, chart, data, options, index) {
 	$.ajax({
