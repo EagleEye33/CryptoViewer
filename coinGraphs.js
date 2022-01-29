@@ -8,22 +8,7 @@ google.charts.setOnLoadCallback(drawChart2);
 google.charts.setOnLoadCallback(drawChart3);
 google.charts.setOnLoadCallback(drawAllChart);
 
-let interval = 3600
-
-/*function asyncChart(site, _response, chart, data, options, index) {
-	$.ajax({
-
-				dataType: 'json', // type of response data
-				url : site,
-				type : 'GET',
-				success : function(response) {
-					let value = parseInt(response.USD.last, 10)
-					data.addRow([index, value]);
-					chart.draw(data, options);
-				},
-			})
-	
-} */
+let interval = 10
 
 function drawChart() {
 	$.ajax({
@@ -45,8 +30,6 @@ function drawChart() {
 
   // create options object with titles, colors, etc.
   let options = {
-  	height: 500,
-  	width: 1000,
   	title: "Bitcoin",
   	colors: ['#FFFF00'],
   	backgroundColor: 'none',
@@ -84,9 +67,18 @@ function drawChart() {
   };
   // draw chart on load
   let chart = new google.visualization.LineChart(
-  	document.getElementById("BTCchart_div")
-  	);
+  	document.getElementById("BTCchart_div"));
   chart.draw(data, options);
+
+  window.addEventListener("resize", function () {
+  	chart.draw(data, options);
+  })
+
+  const Button = document.getElementById("btcButton");
+
+  Button.addEventListener("click", function() {
+  	chart.draw(data, options);
+  });
 
   // interval for adding new data every ???(sec)
   let currentTime = 0;
@@ -120,21 +112,18 @@ function drawChart2() {
         success : function(response) {
         	let initialValue = response.Data.Data[0].high
         	let initialTime = serialDateToNiceDate(response.Data.Data[0].time/3600/24).toString().substr(0,24)
-        	let updateTime = response.Data.Data[response.Data.Data.length-1].time
         	  // create data object with default value
-        	  let data2 = google.visualization.arrayToDataTable([
+        	  let data = google.visualization.arrayToDataTable([
         	  	["Hours", "1 Ethereum in USD"],
         	  	[initialTime, initialValue]
         	  	]);
         	  for(let i=1 ;i < response.Data.Data.length; i++) {
-        	  	data2.addRow([serialDateToNiceDate(response.Data.Data[i].time/3600/24).toString().substr(0,24), response.Data.Data[i].high])
+        	  	data.addRow([serialDateToNiceDate(response.Data.Data[i].time/3600/24).toString().substr(0,24), response.Data.Data[i].high])
         	  }
 
   // create options object with titles, colors, etc.
-  let options2 = {
+  let options = {
   	title: "Ethereum",
-  	height: 500,
-  	width: 1000,
   	backgroundColor: 'none',
   	hAxis: {
   		title: "Time",
@@ -168,15 +157,26 @@ function drawChart2() {
   	}
   };
   // draw chart on load
-  let chart2 = new google.visualization.LineChart(
+  let chart = new google.visualization.LineChart(
   	document.getElementById("ETHchart_div")
   	);
-  chart2.draw(data2, options2);
+  chart.draw(data, options);
+
+  window.addEventListener("resize", function () {
+  	chart.draw(data, options);
+  })
+
+    const Button = document.getElementById("ethButton");
+
+    Button.addEventListener("click", function() {
+    	chart.draw(data, options);
+    });
 
   // interval for adding new data every ???(sec)
   let currentTime = 0;
-  setInterval(function() {
+  let updateTime = Date.now()/1000
 
+  setInterval(function() {
   	$.ajax({
 				dataType: 'json', // type of response data
 				url : 'https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD&api_key=ec2e8882cd27fcbe32ed27687f29807cbf1da7d48bdb20618663752206e8af0b',
@@ -184,8 +184,8 @@ function drawChart2() {
 				success : function(response) {
 					let value = response.USD
 					currentTime = serialDateToNiceDate((updateTime += interval)/3600/24).toString().substr(0,24);
-					data2.addRow([currentTime, value]);
-					chart2.draw(data2, options2);
+					data.addRow([currentTime, value]);
+					chart.draw(data, options);
 				},
 			})
   }, interval*1000);
@@ -203,8 +203,7 @@ function drawChart3() {
         type : 'GET',
         success : function(response) {
         	let initialValue = response.Data.Data[0].high
-        	let initialTime = serialDateToNiceDate(response.Data.Data[0].time/3600/24).toString().substr(0,24)
-        	let updateTime = response.Data.Data[response.Data.Data.length-1].time
+        	let initialTime = serialDateToNiceDate(response.Data.Data[0].time/3600/24).toString().substr(0,24)        
         	  // create data object with default value
         	  let data = google.visualization.arrayToDataTable([
         	  	["Hours", "1 Litecoin in USD"],
@@ -217,8 +216,6 @@ function drawChart3() {
   // create options object with titles, colors, etc.
   let options = {
   	title: "Litecoin",
-  	height: 500,
-  	width: 1000,
   	backgroundColor: 'none',
   	colors: ['7FFFD4'],
   	hAxis: {
@@ -258,8 +255,19 @@ function drawChart3() {
   	);
   chart.draw(data, options);
 
+  window.addEventListener("resize", function () {
+  	chart.draw(data, options);
+  })
+
+  const Button = document.getElementById("ltcButton");
+
+  Button.addEventListener("click", function() {
+  	chart.draw(data, options);
+  });
+
   // interval for adding new data every ???(sec)
   let currentTime = 0;
+  let updateTime = Date.now()/1000
   setInterval(function() {
 
   	$.ajax({
@@ -318,8 +326,7 @@ function drawAllChart() {
         success : function(response) {
         	let btcArray = ajaxCall1()
         	let ethArray = ajaxCall2()
-        	let initialTime = serialDateToNiceDate(response.Data.Data[0].time/3600/24).toString().substr(0,24)
-        	let updateTime = response.Data.Data[response.Data.Data.length-1].time
+        	let initialTime = serialDateToNiceDate(response.Data.Data[0].time/3600/24).toString().substr(0,24)       
         	  // create data object with default value
         	  let allData = google.visualization.arrayToDataTable([
         	  	["Months", "1 Bitcoin in USD", "1 Ethereum in USD", "1 Litecoin in USD"],
@@ -334,8 +341,6 @@ function drawAllChart() {
   	title: "AllCoins",
   	curveType: 'function',
   	legend: { position: 'bottom' },
-  	height: 500,
-  	width: 1000,
   	colors: ['#FFFF00', 'blue', '7FFFD4'],
   	backgroundColor: 'none',
 
@@ -376,9 +381,20 @@ function drawAllChart() {
   	);
   allChart.draw(allData, allOptions);
 
+  window.addEventListener("resize", function () {
+  	allChart.draw(allData, allOptions);
+  })
+
+  const Button = document.getElementById("allButton");
+
+  Button.addEventListener("click", function() {
+  	chart.draw(data, options);
+  });
+
   // interval for adding new data every 5000ms
-  let interval = 10;
   let currentTime = 0;
+  let updateTime = Date.now()/1000
+  
   setInterval(function() {
   	function currentAjaxCall1() {
   	var obj;

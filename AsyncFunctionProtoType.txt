@@ -1,0 +1,14 @@
+/*function asyncChart(site, _response, chart, data, options, index) {
+	$.ajax({
+
+				dataType: 'json', // type of response data
+				url : site,
+				type : 'GET',
+				success : function(response) {
+					let value = parseInt(response.USD.last, 10)
+					data.addRow([index, value]);
+					chart.draw(data, options);
+				},
+			})
+	
+} */
