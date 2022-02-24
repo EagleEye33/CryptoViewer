@@ -1,0 +1,1 @@
+<input type="text" name = "coin" id="coin" placeholder="Search.." >

@@ -8,7 +8,7 @@ google.charts.setOnLoadCallback(drawChart2);
 google.charts.setOnLoadCallback(drawChart3);
 google.charts.setOnLoadCallback(drawAllChart);
 
-let interval = 10
+let interval = 3600
 
 function drawChart() {
 	$.ajax({
@@ -31,38 +31,38 @@ function drawChart() {
   // create options object with titles, colors, etc.
   let options = {
   	title: "Bitcoin",
-  	colors: ['#FFFF00'],
+  	colors: ['#64056C'],
   	backgroundColor: 'none',
 
   	hAxis: {
   		title: "Time",
   		textPosition: 'none',
   		textStyle: {
-  			color: '#ffffff'
+  			color: '#1A48A4'
   		},
   		titleTextStyle: {
-  			color: '#ffffff'
+  			color: '#1A48A4'
   		}
   	},
 
   	vAxis: {
   		title: "USD",
   		textStyle: {
-  			color: '#ffffff'
+  			color: '#1A48A4'
   		},
   		titleTextStyle: {
-  			color: '#ffffff'
+  			color: '#1A48A4'
   		}
   	},
 
   	legend: {
   		textStyle: {
-  			color: '#ffffff'
+  			color: '#1A48A4'
   		}
   	},
 
   	titleTextStyle: {
-  		color: '#ffffff'
+  		color: '#1A48A4'
   	}
   };
   // draw chart on load
@@ -129,31 +129,31 @@ function drawChart2() {
   		title: "Time",
   		textPosition: 'none',
   		textStyle: {
-  			color: '#ffffff'
+  			color: '#1A48A4'
   		},
   		titleTextStyle: {
-  			color: '#ffffff'
+  			color: '#1A48A4'
   		}
   	},
 
   	vAxis: {
   		title: "USD",
   		textStyle: {
-  			color: '#ffffff'
+  			color: '#1A48A4'
   		},
   		titleTextStyle: {
-  			color: '#ffffff'
+  			color: '#1A48A4'
   		}
   	},
 
   	legend: {
   		textStyle: {
-  			color: '#ffffff'
+  			color: '#1A48A4'
   		}
   	},
 
   	titleTextStyle: {
-  		color: '#ffffff'
+  		color: '#1A48A4'
   	}
   };
   // draw chart on load
@@ -222,31 +222,31 @@ function drawChart3() {
   		title: "Time",
   		textPosition: 'none',
   		textStyle: {
-  			color: '#ffffff'
+  			color: '#1A48A4'
   		},
   		titleTextStyle: {
-  			color: '#ffffff'
+  			color: '#1A48A4'
   		}
   	},
 
   	vAxis: {
   		title: "USD",
   		textStyle: {
-  			color: '#ffffff'
+  			color: '#1A48A4'
   		},
   		titleTextStyle: {
-  			color: '#ffffff'
+  			color: '#1A48A4'
   		}
   	},
 
   	legend: {
   		textStyle: {
-  			color: '#ffffff'
+  			color: '#1A48A4'
   		}
   	},
 
   	titleTextStyle: {
-  		color: '#ffffff'
+  		color: '#1A48A4'
   	}
   };
   // draw chart on load
@@ -341,38 +341,38 @@ function drawAllChart() {
   	title: "AllCoins",
   	curveType: 'function',
   	legend: { position: 'bottom' },
-  	colors: ['#FFFF00', 'blue', '7FFFD4'],
+  	colors: ['#64056C', 'blue', '7FFFD4'],
   	backgroundColor: 'none',
 
   	hAxis: {
   		title: "Time",
   		textPosition: 'none',
   		textStyle: {
-  			color: '#ffffff'
+  			color: '#1A48A4'
   		},
   		titleTextStyle: {
-  			color: '#ffffff'
+  			color: '#1A48A4'
   		}
   	},
 
   	vAxis: {
   		title: "USD",
   		textStyle: {
-  			color: '#ffffff'
+  			color: '#1A48A4'
   		},
   		titleTextStyle: {
-  			color: '#ffffff'
+  			color: '#1A48A4'
   		}
   	},
 
   	legend: {
   		textStyle: {
-  			color: '#ffffff'
+  			color: '#1A48A4'
   		}
   	},
 
   	titleTextStyle: {
-  		color: '#ffffff'
+  		color: '#1A48A4'
   	}
   };
   // draw chart on load
@@ -388,7 +388,7 @@ function drawAllChart() {
   const Button = document.getElementById("allButton");
 
   Button.addEventListener("click", function() {
-  	chart.draw(data, options);
+  	allChart.draw(allData, allOptions);
   });
 
   // interval for adding new data every 5000ms

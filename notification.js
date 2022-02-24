@@ -9,7 +9,7 @@ function set_low(value) {
     if (!Number.isNaN(testValue)) {
         low = testValue
         document.getElementById("lowisset").innerHTML = " low is set to: " + low
-        document.getElementById("lowisset").style.color = "white"
+        document.getElementById("lowisset").style.color = "black"
     }
     else {
         document.getElementById("lowisset").innerHTML = " Please enter a valid number"
@@ -22,7 +22,7 @@ function set_high(value) {
     if(!Number.isNaN(testValue)) {
       high = testValue
       document.getElementById("highisset").innerHTML = " high is set to: " + high
-      document.getElementById("highisset").style.color = "white"
+      document.getElementById("highisset").style.color = "black"
   }
     else {
       document.getElementById("highisset").innerHTML = " Please enter a valid number"
@@ -37,7 +37,7 @@ function set_coin(text) {
         document.getElementById("cryptoisset").style.color = "red"
     }
     else {
-        document.getElementById("cryptoisset").style.color = "white"
+        document.getElementById("cryptoisset").style.color = "black"
         document.getElementById("cryptoisset").innerHTML = " cryptocurrency is set to: " + coin
     }
 
@@ -49,7 +49,7 @@ function notifyMe() {
     {
         clearInterval(notifyInterval);
 
-        document.getElementById("notifyisset").style.color = "white"
+        document.getElementById("notifyisset").style.color = "black"
         document.getElementById("notifyisset").innerHTML = ' notification set with low: ' +low+ ', high: ' +high+ ' and cryptocurrency ' +coin 
         document.getElementById("lowisset").innerHTML = ''
         document.getElementById('highisset').innerHTML= ''

@@ -1,15 +1,42 @@
 	body {
-	  background-image: url('space.jpg');
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-attachment: fixed;
+	  margin: 0 auto;
+	  color: #DBE9E9;
 	} 
-	
+
+	.background-image {
+		flex: 3;
+	}
+
+	@media screen and (min-width: 1120px) {
+			#back-img {min-width: 100%; max-height: 70%;}
+		}
+
+	@media screen and (max-width: 1000px) {
+		.background-image {display: none}
+		.image {display: flex; justify-content: center;}
+	}
+
+	.image {
+		flex: 1;
+	}
+
+	.image2 {
+		flex: 1;
+		display: flex; 
+		justify-content: center;
+		width: 30vw;
+		height: 30vh;
+	}
+
+	.flex-container {
+		display: flex;
+	}
+
 	.chartWrapper {
 		position: relative;
 		width: 100vw;
 		height: 100vh;
-		
+		margin-top: -25vh;
 	}
 
 	.myCharts {
@@ -21,68 +48,33 @@
 	   height: 50vh;
 	}
 
-	.notifications {
+	.contact {
 	   position: absolute;
 	   left: 50%;
 	   top: 50%;
 	   transform: translate(-50%,-50%);
 	}
 
-	.contact {
+	.wrapper {
+		position: relative;
+		margin-top: 20vh;
+		height: 50vh;
+	}
+
+	.notification_buttons {
 	   position: absolute;
 	   left: 50%;
-	   top: 40%;
+	   top: 20%;
 	   transform: translate(-50%,-50%);
-	   color: white;
 	}
 
-    /* Dropdown Button */
-	.dropbtn {
-	  background-color: #121212;
-	  color: #6A5ACD;
-	  padding: 6px;
-	  font-size: 12px;
-	  cursor: pointer;
+	@media screen and (max-width: 650px) {
+		.notification_buttons {height: 150px;}
 	}
 
-	/* Dropdown button on hover & focus */
-	.dropbtn:hover, .dropbtn:focus {
-	  background-color: #121212;
+	@media screen and (max-height: 650px) {
+		.notification_buttons {height: 150px;}
 	}
-
-	/* The container <div> - needed to position the dropdown content */
-	.dropdown {
-	  position: relative;
-	  display: inline-block;
-	  margin-left: 3%;
-	  margin-top: .3%;
-	}
-
-	/* Dropdown Content */
-	.dropdown-content {
-	  display: none;
-	  position: fixed;
-	  background-color: #f1f1f1;
-	  min-width: 60px;
-	  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-	  z-index: 1;
-	}
-
-	/* Links inside the dropdown */
-	.dropdown-content button {
-	  color: black;
-	  padding: 6px 8px;
-	  text-decoration: none;
-	  display: block;
-	  font-size: 12px;
-	  margin: 4px;
-	}
-
-	/* Change color of dropdown links on hover */
-	.dropdown-content button:hover {background-color: #ddd}
-
-	/* Show the dropdown menu */
-	.show {display:block;}
 
 	.myCharts {
 		align-self: center;

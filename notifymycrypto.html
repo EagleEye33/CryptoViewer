@@ -2,25 +2,37 @@
 <html>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="button_graphs.css">
 <body>
 
 <!-- Navigation -->
-<nav class="w3-bar w3-black">
-  <a href="notifymycrypto.html" class="w3-button w3-bar-item">Home</a>
-  <a href="notifications.html" class="w3-button w3-bar-item">Notifications</a>
-  <a href="contact.html" class="w3-button w3-bar-item">Contact</a>
-  <div class="dropdown">
-	  <button onclick="myFunction()" class="dropbtn">cryptocurrency</button>
-	  	<div id="myDropdown" class="dropdown-content">
-		    <button id="btcButton" onclick="DisplayBTC()">BTC</button>
-		    <button id="ethButton" onclick="DisplayETH()">ETH</button>
-		    <button id="ltcButton" onclick="DisplayLTC()">LTC</button>
-		    <button id="allButton" onclick="DisplayAll()">All</button>
+<nav class="w3-bar w3-dark-grey">
+  <a href="notifymycrypto.html" class="w3-bar-item w3-button w3-mobile">Home</a>
+  <a href="notifications.html" class="w3-bar-item w3-button w3-mobile">Notifications</a>
+  <a href="contact.html" class="w3-bar-item w3-button w3-mobile">Contact</a>
+  <div class="w3-dropdown-hover w3-mobile">
+	  <button class="w3-button">select cryptocurrency <i class="fa fa-caret-down"></i></button>
+	  	<div class="w3-dropdown-content w3-bar-block w3-dark-grey">
+		    <button class="w3-bar-item w3-button w3-mobile" id="btcButton" onclick="DisplayBTC()">BTC</button>
+		    <button class="w3-bar-item w3-button w3-mobile" id="ethButton" onclick="DisplayETH()">ETH</button>
+		    <button class="w3-bar-item w3-button w3-mobile" id="ltcButton" onclick="DisplayLTC()">LTC</button>
+		    <button class="w3-bar-item w3-button w3-mobile" id="allButton" onclick="DisplayAll()">All</button>
 	  	</div>
   </div>
 </nav>
+
+<section class="flex-container">
+	<div class="image">
+		<img id="img" src="wc_logo.jpg" alt="crpytocurrency notifications">
+	</div>
+		<div class="background-image"> 
+			<img id="back-img" src="wall-street.webp">
+	</div> 
+</section>
+
+<p style="margin: 0 auto;text-align:center;max-width:50em;font-family:Georgia;line-height:1.5;padding:4em 1em;color:black;font-size:24px; ">Welcome to NotifyMyCrypto - a website built for enabling notifications on your desktop about changes in Ehtereum, Bitcoin or Litecoin. <br><br>Below you'll find graphs with some recent historical data for the three cryptocurrencies described. This is meant to help set reasonable values for your notification.</p>
 
 <div class="chartWrapper">
 		<div class="myCharts" id="BTCchart_div"></div>
@@ -28,6 +40,8 @@
 		<div class="myCharts" id="LTCchart_div" style="display:none;"></div>
 		<div class="myCharts" id="Allchart_div" style="display: none"></div>
 </div>
+
+<p style="color:black;text-align:center;bottom: 0;font-size:18px;font-weight:900; padding-bottom: 10vh;font-family: cursive;font-style: italic;">by Wyatt Colyn</p>
 
 <script type="text/javascript" loading="lazy" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
