@@ -13,7 +13,7 @@
 
 	@media screen and (max-width: 1000px) {
 		.background-image {display: none}
-		.image {display: flex; justify-content: center;}
+		.image {flex: 1;display: flex; justify-content: center; width: 30vw; height: 30vh}
 	}
 
 	.image {
@@ -74,8 +74,13 @@
 
 	@media screen and (max-height: 650px) {
 		.notification_buttons {height: 150px;}
+		.main_paragraphs {font-size: 2vw}
 	}
 
 	.myCharts {
 		align-self: center;
+	}
+
+	.main_paragraphs {
+		margin: 0 auto;text-align:center;max-width:50em;font-family:Georgia;line-height:1.5;padding:4em 1em;color:black;font-size:18px;
 	}

@@ -1,0 +1,13 @@
+<button onclick="set_coin(document.getElementById('coin').value)">Add cryptocurrency</button>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#dropdown a").click(function() {
+			var value = $(this).html();
+				var input = $("#coin");
+				input.val(value);
+		});
+	});
+</script>
+
+<input type="text" name="coin" id="coin">
