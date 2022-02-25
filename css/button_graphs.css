@@ -49,10 +49,9 @@
 	}
 
 	.contact {
-	   position: absolute;
-	   left: 50%;
-	   top: 50%;
-	   transform: translate(-50%,-50%);
+		flex: 1;
+	   display: flex; 
+	   justify-content: center;
 	}
 
 	.wrapper {
@@ -68,13 +67,8 @@
 	   transform: translate(-50%,-50%);
 	}
 
-	@media screen and (max-width: 650px) {
-		.notification_buttons {height: 150px;}
-	}
-
-	@media screen and (max-height: 650px) {
-		.notification_buttons {height: 150px;}
-		.main_paragraphs {font-size: 2vw}
+	.signature {
+		color:black;text-align:center;bottom: 0;font-size:18px;font-weight:900; padding-bottom: 10vh;font-family: cursive;font-style: italic;
 	}
 
 	.myCharts {
@@ -82,5 +76,15 @@
 	}
 
 	.main_paragraphs {
-		margin: 0 auto;text-align:center;max-width:50em;font-family:Georgia;line-height:1.5;padding:4em 1em;color:black;font-size:18px;
+		margin: 0 auto;text-align:center;max-width:50em;font-family:Georgia;line-height:1.5;padding:4em 1em;color:black;font-size:18px
+	}
+
+	@media screen and (max-width: 650px) {
+		.notification_buttons {height: 150px;}
+		.main_paragraphs {font-size: 2vw}
+		.signature {font-size: 2vw}
+	}
+
+	@media screen and (max-height: 650px) {
+		.notification_buttons {height: 150px;}
 	}
