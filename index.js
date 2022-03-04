@@ -1,8 +1,6 @@
 // Check if service workers are supported
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js', {
-    scope: '/',
-  });
+  navigator.serviceWorker.register('sw.js')
 }
 
 const publicVapidKey = 'BIAUP5hSHtnQGZvpPNVDWnxZ5S8155ugX7xDQ2JGRaZ3H_cLbXrpHmpCbxzCaEy2yzd2y-5K1CP75kp28kBsisQ';
