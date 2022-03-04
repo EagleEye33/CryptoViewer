@@ -1,11 +1,12 @@
 // Check if service workers are supported
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js');
+  navigator.serviceWorker.register('sw.js', {
+    scope: '/',
+  });
 }
 
 const publicVapidKey = 'BIAUP5hSHtnQGZvpPNVDWnxZ5S8155ugX7xDQ2JGRaZ3H_cLbXrpHmpCbxzCaEy2yzd2y-5K1CP75kp28kBsisQ';
 
-// Copied from the web-push documentation
 const urlBase64ToUint8Array = (base64String) => {
   const padding = '='.repeat((4 - base64String.length % 4) % 4);
   const base64 = (base64String + padding)
@@ -21,6 +22,16 @@ const urlBase64ToUint8Array = (base64String) => {
   return outputArray;
 };
 
+const getSubscribedElement = () => document.getElementById('subscribed');
+const getUnsubscribedElement = () => document.getElementById('unsubscribed');
+
+const setSubscribeMessage = async () => {
+  const registration = await navigator.serviceWorker.ready;
+  const subscription = await registration.pushManager.getSubscription();
+  getSubscribedElement().setAttribute('style', `display: ${subscription ? 'block' : 'none'};`);
+  getUnsubscribedElement().setAttribute('style', `display: ${subscription ? 'none' : 'block'};`);
+};
+
 window.subscribe = async () => {
   if (!('serviceWorker' in navigator)) return;
 
@@ -32,13 +43,17 @@ window.subscribe = async () => {
     applicationServerKey: urlBase64ToUint8Array(publicVapidKey),
   });
 
-  await fetch('/subscription', {
+  const response = await fetch('/subscription', {
     method: 'POST',
     body: JSON.stringify(subscription),
     headers: {
       'content-type': 'application/json',
     },
   });
+
+  if (response.ok) {
+    setSubscribeMessage();
+  }
 };
 
 window.unsubscribe = async () => {
@@ -53,4 +68,20 @@ window.unsubscribe = async () => {
       'content-type': 'application/json',
     },
   });
+
+  if (response.ok) {
+    await subscription.unsubscribe();
+    setSubscribeMessage();
+  }
 };
+
+window.broadcast = async () => {
+  await fetch('/broadcast', {
+    method: 'GET',
+    headers: {
+      'content-type': 'application/json',
+    },
+  });
+};
+
+setSubscribeMessage();
