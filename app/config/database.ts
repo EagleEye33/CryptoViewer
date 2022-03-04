@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 
+console.log("hello!")
+
 export default async () => {
   // Connect to the database
   try {
