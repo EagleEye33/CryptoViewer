@@ -9,6 +9,7 @@ export default async () => {
     });
 
     mongoose.set('useCreateIndex', true);
+    console.log("success");
   } catch (e) {
     console.error(`Couldn't connect to the database: ${e}`);
     process.exit(1);
