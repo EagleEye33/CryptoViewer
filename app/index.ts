@@ -1,7 +1,7 @@
 import express from 'express';
 import path from 'path';
 import bodyParser from 'body-parser';
-import database from './config/database';
+import database from './config/database.ts';
 
 const app = express();
 const port = 8080; // default port to listen

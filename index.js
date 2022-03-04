@@ -3,7 +3,7 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js');
 }
 
-const publicVapidKey = 'BIJyQ6fI1si9LM9enbCk81JUO9_A3J9K1i9rkutpy805m5uBDuw_cH0d0CRq-MFiav4Lro_aReGDpZDzPB1rWko';
+const publicVapidKey = 'BIAUP5hSHtnQGZvpPNVDWnxZ5S8155ugX7xDQ2JGRaZ3H_cLbXrpHmpCbxzCaEy2yzd2y-5K1CP75kp28kBsisQ';
 
 // Copied from the web-push documentation
 const urlBase64ToUint8Array = (base64String) => {
