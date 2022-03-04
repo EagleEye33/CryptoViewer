@@ -8,6 +8,7 @@ export default async () => {
       useUnifiedTopology: true,
     } as ConnectOptions);
 
+    mongoose.set('useCreateIndex', true);
   } catch (e) {
     console.error(`Couldn't connect to the database: ${e}`);
     process.exit(1);
